@@ -24,8 +24,13 @@ import com.example.accountnotes.main_screens.BottomNavItem
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ListScreen(navController: NavController) {
-    var inputFieldText by remember { mutableStateOf("") }
+fun ListScreen(
+    navController: NavController,
+ //   journalViewModel: JournalViewMode = viewModel(factory = JournalViewMode.factory)
+) {
+    var inputFieldText by remember { mutableStateOf("rr") }
+
+   // val itemsLis = journalViewModel.itemsList.collectAsState(initial = emptyList())
 
     Column(
         modifier = Modifier
@@ -34,7 +39,8 @@ fun ListScreen(navController: NavController) {
             .padding(top = 20.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Button(onClick = { navController.navigate(BottomNavItem.note.withArgs(inputFieldText))
+        Button(onClick = {
+            navController.navigate(BottomNavItem.note.withArgs(inputFieldText))
         })
         {
             Text("go to details")
@@ -49,6 +55,8 @@ fun ListScreen(navController: NavController) {
                 Text("Label")
             }
         )
+
+
     }
 
 
@@ -62,7 +70,6 @@ fun ListScreen(navController: NavController) {
             .wrapContentWidth()
             .wrapContentHeight()
     )
-
 
 
 }
